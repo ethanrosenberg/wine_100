@@ -1,6 +1,3 @@
-require "wine_100/version"
+require_relative "./wine_100/version"
+require_relative "./wine_100/cli"
 
-module Wine100
-  class Error < StandardError; end
-  # Your code goes here...
-end
