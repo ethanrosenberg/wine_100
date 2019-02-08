@@ -2,7 +2,7 @@ class Wine100::Wine
   
   @@all = []
   
-  attr_accessor :name, :rank, :vintage, :score, :price
+  attr_accessor :name, :rank, :vintage, :score, :price, :tasting_note
   
   def initialize(name)
     @name = name

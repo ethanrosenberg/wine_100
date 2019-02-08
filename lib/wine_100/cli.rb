@@ -38,7 +38,7 @@ class Wine100::CLI
   end
   
   def list_top_wines
-
+    Wine100::Scrape.scrape_top_100
   end
   
   def list_by_rating
