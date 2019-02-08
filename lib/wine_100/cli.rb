@@ -10,13 +10,17 @@ class Wine100::CLI
     puts "2. 1988 Chateau Petrus Pomerol"
   end
   
-  def list_by_price_most_expensive
+  def menu
+    puts "Please enter the number of your choice:"
+    puts " "
+    puts "1. View List of Top 100 Wines."
+    puts "2. List of Top 100 Wines by Rating"
+    puts "3. List of Top 100 Wines by Price"
+    puts "4. Find wine by tasting note keyword eg. licorice (beta)"
+  end
+  
+   def list_by_price_most_expensive
     puts "Would you like to list the top 100 wines by price Highest - Lowest? (y/n)"
   end
   
-  def menu
-    puts "Please enter the number of your choice:"
-    puts "1. List of Top 100 Wines by prices Highest"
-    puts "2. List of Top 100 Wines by Rating"
-  end
 end
