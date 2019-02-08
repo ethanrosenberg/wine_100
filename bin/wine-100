@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+Wine100::CLI.new.call
