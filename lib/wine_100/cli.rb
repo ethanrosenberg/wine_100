@@ -4,6 +4,7 @@ require 'colorized_string'
 class Wine100::CLI
   
   def call
+    
     puts ""
     puts "Welcome to the Top 100 Wines Rated by Wine Spectator".colorize(:color => :green)
     Wine100::Scrape.new.build_wines
@@ -15,7 +16,8 @@ class Wine100::CLI
     input = ""
       until input == "exit" 
         if count != 0
-      puts "Would you like to make another choice? (y/n)".colorize(:color => :light_blue)
+          #binding.pry
+      puts "Would you like to make another choice? (y/n)".colorize(:color => :light_blue) if input != "5"
             another_choice = gets.chomp.to_s
             if another_choice == "y"
               display_options
@@ -29,6 +31,7 @@ class Wine100::CLI
           display_options
           input = gets.chomp.to_s
           process_input(input)
+          #break if input == 5
           #binding.pry
           
         end
@@ -56,7 +59,7 @@ class Wine100::CLI
           find_by_tasting_keyword(search_keyword)
           elsif input == "5" || input == "exit"
             goodbye
-            input == "exit"
+    
           else
            puts ""
            puts "Please enter a valid command."
