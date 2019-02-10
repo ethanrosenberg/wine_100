@@ -24,14 +24,9 @@ class Wine100::Scrape
   
   def build_wines
     scrape_wine_advocate.each do |wine_item|
-      binding.pry
+      Wine100::Wine.build_wine_from_table(wine_item)
     end
   end
-  def self.scrape_top_100
-     url = 'https://top100.winespectator.com/lists/'
-    @scrape_html = Nokogiri::HTML(open("./fixtures/winespectator.html"))
-        binding.pry
-    @scrape_html.css("tr[role='row']")
-  end
+
   
 end
