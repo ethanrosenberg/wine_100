@@ -5,8 +5,10 @@ class Wine100::Wine
   
   attr_accessor :name, :rank, :vintage, :score, :price, :tasting_note
   
-  def initialize(name)
+  def initialize(name, rank, vintage)
     @name = name
+    @rank = "1"
+    @vintage = vintage
     @@all << self
     binding.pry
   end
@@ -16,16 +18,20 @@ class Wine100::Wine
   end
   
   def self.build_wine_from_table(row)
-    self.new(build_wine_title(row))
+    self.new(build_wine_title(row),)
   end
   
-  def self.build_wine_title(row)
-    #binding.pry
-    winery_main_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[1].text.strip
-    
-    winery_wine_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[0].text.strip
-    
-    return "#{winery_main_title} #{winery_wine_title}"
+ 
+  
+  def vintage
+    @vintage ||= wine_row.css("td[class='name'] div[class='table-name'] span[class='wineName'] .vintageNumber").text.strip
   end
+  
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
+  end
+  
+  
+  
   
 end
