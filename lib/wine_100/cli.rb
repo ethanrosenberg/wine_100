@@ -31,8 +31,9 @@ class Wine100::CLI
         find_by_tasting_keyword
       elsif input == "exit"
         goodbye
+      else
+        "Please enter a valid command."
       end
-      
     end
       
   end
