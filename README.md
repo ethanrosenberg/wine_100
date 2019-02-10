@@ -7,8 +7,6 @@ This gem provides access to the top 100 wines rated by Wine Spectator. You can v
 3. Top 100 Wines Sorted by Highest Price
 4. View a list of wines that have tasting notes that match your desired keyword. eg. "blackberry"
 
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
