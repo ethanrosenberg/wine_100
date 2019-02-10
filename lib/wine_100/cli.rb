@@ -8,39 +8,45 @@ class Wine100::CLI
 
   
   def menu
-    
+    count = 0
     input = ""
-    until input == "exit" 
-      puts ""
-      puts "Would you like to make another choice? (y/n)"
+      until input == "exit" 
       
-      input = gets.chomp.to_s
-      
-      if input == "y"
-        display_options
-      else
-        goodbye
+        if count != 0
+          puts "Would you like to make another choice? (y/n)"
+          another_choice = gets.chomp.to_s
+          if another_choice == "y"
+            display_options
+            input = gets.chomp.to_s
+            process_input(input)
+          end
+        else
+          display_options
+          input = gets.chomp.to_s
+          process_input(input)
+         end
+         count += 1
+         
       end
-     
-      
-      input = gets.chomp.to_s
-        
-      
-      if input == "1" || input == "1."
-        list_top_wines
-      elsif input == "2" || input == "2."
-        list_by_rating
-      elsif input == "3" || input == "3."
-        list_by_price
-      elsif input == "4" || input == "4."
-        find_by_tasting_keyword
-      elsif input == "exit"
-        goodbye
-      else
-        "Please enter a valid command."
-      end
-    end
-      
+    
+  end
+  
+  def process_input(input)
+    
+          if input == "1" || input == "1."
+            list_top_wines
+          elsif input == "2" || input == "2."
+            list_by_rating
+          elsif input == "3" || input == "3."
+            list_by_price
+          elsif input == "4" || input == "4."
+            find_by_tasting_keyword
+          elsif input == "exit"
+            goodbye
+          else
+           puts "Please enter a valid command."
+          end
+          
   end
   
   def display_options
