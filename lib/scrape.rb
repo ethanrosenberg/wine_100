@@ -93,7 +93,25 @@ class Wine100::Scrape
   
   def self.display_tasting_note_matches(search_keyword)
     matches = Wine100::Wine.all.select { |item| item.tasting_note.downcase.include?(search_keyword.downcase) }
-    binding.pry
+    count = 1
+    if matches.size > 0
+      matches.each do |wine|
+      puts ""
+      puts "---------------------------"
+      puts "#{count}. #{wine.name} Rank - #{wine.rank}"
+      puts ""
+      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: $#{wine.price}"
+      puts ""
+      puts "Tasting Notes:"
+      puts "#{wine.tasting_note.gsub(search_keyword.downcase, ColorizedString[search_keyword].colorize(:green))}"
+      puts "---------------------------"
+      puts ""
+      count += 1
+    end
+    else
+      
+    end
+      
   end
   
     
