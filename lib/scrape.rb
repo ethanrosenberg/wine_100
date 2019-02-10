@@ -81,7 +81,7 @@ class Wine100::Scrape
       puts "---------------------------"
       puts "#{count}. #{wine.name} - Rank: #{wine.rank}"
       puts ""
-      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: $#{ColorizedString[wine.price.to_s].colorize(:red)}"
+      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: #{ColorizedString["$#{wine.price.to_s}"].colorize(:red)}"
       puts ""
       puts "Tasting Notes:"
       puts "#{wine.tasting_note}"
