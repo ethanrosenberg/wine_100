@@ -109,7 +109,9 @@ class Wine100::Scrape
       count += 1
     end
     else
-      
+      puts ""
+      puts ColorizedString["Sorry no matches were found!"].colorize(:red)
+      puts ""
     end
       
   end
