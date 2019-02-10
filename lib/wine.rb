@@ -5,10 +5,13 @@ class Wine100::Wine
   
   attr_accessor :name, :rank, :vintage, :score, :price, :tasting_note
   
-  def initialize(name, rank, vintage)
+  def initialize(name, rank, vintage, score, price, tasting_note)
     @name = name
-    @rank = "1"
+    @rank = rank
     @vintage = vintage
+    @score = score
+    @price = price
+    @tasting_note = tasting_note
     @@all << self
     binding.pry
   end
