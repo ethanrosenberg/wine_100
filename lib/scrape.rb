@@ -52,6 +52,26 @@ class Wine100::Scrape
     end
   end
   
+  def self.display_top_100_by_score
+    sorted_by_score = Wine100::Wine.all.sort {|wine| wine.score.to_i}
+    
+     sorted_by_score.each do |wine|
+      puts ""
+      puts "---------------------------"
+      puts "#{wine.rank}. #{wine.name} - #{wine.vintage}"
+      puts ""
+      puts "Score: #{wine.score} Price: #{wine.price}"
+      puts ""
+      puts "Tasting Notes:"
+      puts "#{wine.tasting_note}"
+      puts "---------------------------"
+      puts ""
+      
+    end
+    #binding.pry
+   
+  end
+  
   def build_wine_title(row)
     winery_main_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[1].text.strip
     winery_wine_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[0].text.strip

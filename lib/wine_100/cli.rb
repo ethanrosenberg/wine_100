@@ -1,4 +1,5 @@
 class Wine100::CLI
+  
   def call
     puts "Welcome to the Top 100 Wines Rated by Wine Spectator"
     Wine100::Scrape.new.build_wines
@@ -11,22 +12,26 @@ class Wine100::CLI
     count = 0
     input = ""
       until input == "exit" 
-      
         if count != 0
-          puts "Would you like to make another choice? (y/n)"
-          another_choice = gets.chomp.to_s
-          if another_choice == "y"
-            display_options
-            input = gets.chomp.to_s
-            process_input(input)
-          end
+            puts "Would you like to make another choice? (y/n)"
+            another_choice = gets.chomp.to_s
+            if another_choice == "y"
+              display_options
+              input = gets.chomp.to_s
+              process_input(input)
+            else
+              input = "exit"
+              break
+            end
         else
           display_options
           input = gets.chomp.to_s
           process_input(input)
-         end
-         count += 1
-         
+          #binding.pry
+          
+        end
+        
+          count += 1
       end
       
       goodbye
@@ -43,10 +48,13 @@ class Wine100::CLI
             list_by_price
           elsif input == "4" || input == "4."
             find_by_tasting_keyword
-          elsif input == "exit"
+          elsif input == "5" || input == "exit"
             goodbye
+            input == "exit"
           else
+           puts ""
            puts "Please enter a valid command."
+           puts ""
           end
           
   end
@@ -56,7 +64,7 @@ class Wine100::CLI
       puts "Please enter the number of your choice:"
       puts " "
       puts "1. View List of Top 100 Wines."
-      puts "2. List of Top 100 Wines by Rating"
+      puts "2. List of Top 100 Wines by Score"
       puts "3. List of Top 100 Wines by Price"
       puts "4. Find wine by entering tasting note keyword eg. \"licorice\" (beta)"
       puts "5. Exit"
@@ -67,7 +75,7 @@ class Wine100::CLI
   end
   
   def list_by_rating
-    
+    Wine100::Scrape.display_top_100_by_score
   end
   
   def list_by_price
@@ -78,10 +86,9 @@ class Wine100::CLI
     
   end
   
-  def 
   
   def goodbye
-    "We hope you found the perfect wine! Goodbye!"
+    puts "We hope you found the perfect wine! Goodbye!"
   end
   
 end

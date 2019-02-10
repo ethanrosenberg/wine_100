@@ -9,7 +9,7 @@ class Wine100::Wine
     @name = name
     @rank = rank
     @vintage = vintage
-    @score = score
+    @score = score.to_i
     @price = price
     @tasting_note = tasting_note
     @@all << self
