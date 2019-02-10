@@ -9,6 +9,8 @@ This gem provides access to the top 100 wines rated by Wine Spectator. You can v
 
 ## Installation
 
+Add the following to your gem file
+
 ```ruby
 gem 'wine_100'
 ```
