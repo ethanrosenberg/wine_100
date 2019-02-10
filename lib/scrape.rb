@@ -22,25 +22,33 @@ class Wine100::Scrape
     rows = []
     data_rows = self.load_page.css("tr[role='row']")
     
+    count = 1
     data_rows.each do |row|
       wine_hash = {
         :name => build_wine_title(row),
-        :rank => "",
+        :rank => count,
         :vintage => row.css(".vintage").text.strip,
         :score => row.css(".score").text.strip,
         :price => row.css(".price").text.strip,
-        :tasting_note => ""
+        :tasting_note => build_tasting_note(row)
       }
-      
-      binding.pry
+      count += 1
+      rows << wine_hash
     end
-    
+    rows
   end
+
   
-   def build_wine_title(row)
+  def build_wine_title(row)
     winery_main_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[1].text.strip
     winery_wine_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[0].text.strip
     return "#{winery_main_title} #{winery_wine_title}"
+  end
+  
+  def build_tasting_note(row)
+    note = row.css(".name .table-aditionalInfo .tabel-note").children[0].text.strip
+    reviewer_initials = row.css(".name .table-aditionalInfo .tabel-note i").children[0]
+    return "#{note}#{reviewer_initials}"
   end
   
   
