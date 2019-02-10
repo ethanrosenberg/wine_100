@@ -1,4 +1,4 @@
-require 'pry'
+
 class Wine100::Wine
   
   @@all = []

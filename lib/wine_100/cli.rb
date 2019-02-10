@@ -1,19 +1,20 @@
+require 'colorize'
+require 'colorized_string'
+
 class Wine100::CLI
   
   def call
-    puts "Welcome to the Top 100 Wines Rated by Wine Spectator"
+    puts "Welcome to the Top 100 Wines Rated by Wine Spectator".colorize(:color => :green)
     Wine100::Scrape.new.build_wines
     menu
   end
-  
-
   
   def menu
     count = 0
     input = ""
       until input == "exit" 
         if count != 0
-            puts "Would you like to make another choice? (y/n)"
+      puts "Would you like to make another choice? (y/n)".colorize(:color => :light_blue)
             another_choice = gets.chomp.to_s
             if another_choice == "y"
               display_options

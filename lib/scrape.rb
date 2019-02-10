@@ -1,6 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
+require 'colorize'
+require 'colorized_string'
 
 class Wine100::Scrape
   
@@ -40,7 +42,7 @@ class Wine100::Scrape
     Wine100::Wine.all.each do |wine|
       puts ""
       puts "---------------------------"
-      puts "#{wine.rank}. #{wine.name} - #{wine.vintage}"
+      puts "#{ColorizedString[wine.rank.to_s].colorize(:red)} #{wine.name} - #{wine.vintage}"
       puts ""
       puts "Score: #{wine.score} Price: #{wine.price}"
       puts ""
@@ -61,7 +63,7 @@ class Wine100::Scrape
       puts "---------------------------"
       puts "#{count}. #{wine.name} Rank - #{wine.rank}"
       puts ""
-      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: #{wine.price}"
+      puts "Vintage: #{wine.vintage} Score: #{ColorizedString[wine.score.to_s].colorize(:red)} Price: #{wine.price}"
       puts ""
       puts "Tasting Notes:"
       puts "#{wine.tasting_note}"
@@ -79,7 +81,7 @@ class Wine100::Scrape
       puts "---------------------------"
       puts "#{count}. #{wine.name} Rank - #{wine.rank}"
       puts ""
-      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: #{wine.price}"
+      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: #{ColorizedString[wine.price.to_s].colorize(:red)}"
       puts ""
       puts "Tasting Notes:"
       puts "#{wine.tasting_note}"
