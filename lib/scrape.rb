@@ -27,8 +27,8 @@ class Wine100::Scrape
         :name => build_wine_title(row),
         :rank => "",
         :vintage => row.css(".vintage").text.strip,
-        :score => "",
-        :price => "",
+        :score => row.css(".score").text.strip,
+        :price => row.css(".price").text.strip,
         :tasting_note => ""
       }
       
