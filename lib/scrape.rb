@@ -17,10 +17,16 @@ class Wine100::Scrape
     #Nokogiri::HTML(open("https://top100.winespectator.com/lists/"))
   end
   
-  def build_wines
+  def scrape_wine_advocate
+    self.load_page.css("tr[role='row']")
     
   end
   
+  def build_wines
+    scrape_wine_advocate.each do |wine_item|
+      binding.pry
+    end
+  end
   def self.scrape_top_100
      url = 'https://top100.winespectator.com/lists/'
     @scrape_html = Nokogiri::HTML(open("./fixtures/winespectator.html"))
