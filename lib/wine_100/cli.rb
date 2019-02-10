@@ -59,6 +59,7 @@ class Wine100::CLI
           find_by_tasting_keyword(search_keyword)
           elsif input == "5" || input == "exit"
             goodbye
+            exit
     
           else
            puts ""

@@ -1,6 +1,11 @@
 # Wine100 - Top 100 Wines from Wine Spectator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wine_100`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem provides access to the top 100 wines rated by Wine Spectator. You can view the data in several formats:
+
+1. List of Top 100 wines
+2. Top 100 Wines Sorted by Highest Score
+3. Top 100 Wines Sorted by Highest Price
+4. View a list of wines that have tasting notes that match your desired keyword. eg. "blackberry"
 
 TODO: Delete this and the text above, and describe your gem
 

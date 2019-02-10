@@ -42,7 +42,7 @@ class Wine100::Scrape
     Wine100::Wine.all.each do |wine|
       puts ""
       puts "---------------------------"
-      puts "#{ColorizedString[wine.rank.to_s].colorize(:red)} #{wine.name} - #{wine.vintage}"
+      puts "#{ColorizedString[wine.rank.to_s].colorize(:red)}. #{wine.name} - #{wine.vintage}"
       puts ""
       puts "Score: #{wine.score} Price: $#{wine.price}"
       puts ""
@@ -61,7 +61,7 @@ class Wine100::Scrape
      sorted_by_score.each do |wine|
       puts ""
       puts "---------------------------"
-      puts "#{count}. #{wine.name} Rank - #{wine.rank}"
+      puts "#{count}. #{wine.name} - Rank: #{wine.rank}"
       puts ""
       puts "Vintage: #{wine.vintage} Score: #{ColorizedString[wine.score.to_s].colorize(:red)} Price: $#{wine.price}"
       puts ""
@@ -79,7 +79,7 @@ class Wine100::Scrape
      sorted_by_price.each do |wine|
       puts ""
       puts "---------------------------"
-      puts "#{count}. #{wine.name} Rank - #{wine.rank}"
+      puts "#{count}. #{wine.name} - Rank: #{wine.rank}"
       puts ""
       puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: $#{ColorizedString[wine.price.to_s].colorize(:red)}"
       puts ""
@@ -98,7 +98,7 @@ class Wine100::Scrape
       matches.each do |wine|
       puts ""
       puts "---------------------------"
-      puts "#{count}. #{wine.name} Rank - #{wine.rank}"
+      puts "#{count}. #{wine.name} - Rank: #{wine.rank}"
       puts ""
       puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: $#{wine.price}"
       puts ""
