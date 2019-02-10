@@ -4,6 +4,7 @@ require 'colorized_string'
 class Wine100::CLI
   
   def call
+    puts ""
     puts "Welcome to the Top 100 Wines Rated by Wine Spectator".colorize(:color => :green)
     Wine100::Scrape.new.build_wines
     menu
@@ -48,7 +49,11 @@ class Wine100::CLI
           elsif input == "3" || input == "3."
             list_by_price
           elsif input == "4" || input == "4."
-            find_by_tasting_keyword
+          puts ""
+          puts "Please enter a single keyword eg. \"blackberry\" to search for wines with tasting notes that match.".colorize(:color => :green)
+          puts ""
+          search_keyword = gets.chomp.to_s
+          find_by_tasting_keyword(search_keyword)
           elsif input == "5" || input == "exit"
             goodbye
             input == "exit"
@@ -64,11 +69,11 @@ class Wine100::CLI
       puts ""
       puts "Please enter the number of your choice:"
       puts " "
-      puts "1. View List of Top 100 Wines."
-      puts "2. List of Top 100 Wines by Score"
-      puts "3. List of Top 100 Wines by Price"
-      puts "4. Find wine by entering tasting note keyword eg. \"licorice\" (beta)"
-      puts "5. Exit"
+      puts "#{ColorizedString["1"].colorize(:red)}. View List of Top 100 Wines."
+      puts "#{ColorizedString["2"].colorize(:red)}. List of Top 100 Wines by Score"
+      puts "#{ColorizedString["3"].colorize(:red)}. List of Top 100 Wines by Price"
+      puts "#{ColorizedString["4"].colorize(:red)}. Find wine by entering tasting note keyword eg. \"licorice\" (beta)"
+      puts "#{ColorizedString["5"].colorize(:red)}. Exit"
   end
   
   def list_top_wines
@@ -83,8 +88,8 @@ class Wine100::CLI
     Wine100::Scrape.display_top_100_by_price
   end
   
-  def find_by_tasting_keyword
-    
+  def find_by_tasting_keyword(search_keyword)
+    Wine100::Scrape.display_tasting_note_matches(search_keyword)
   end
   
   

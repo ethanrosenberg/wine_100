@@ -44,7 +44,7 @@ class Wine100::Scrape
       puts "---------------------------"
       puts "#{ColorizedString[wine.rank.to_s].colorize(:red)} #{wine.name} - #{wine.vintage}"
       puts ""
-      puts "Score: #{wine.score} Price: #{wine.price}"
+      puts "Score: #{wine.score} Price: $#{wine.price}"
       puts ""
       puts "Tasting Notes:"
       puts "#{wine.tasting_note}"
@@ -63,7 +63,7 @@ class Wine100::Scrape
       puts "---------------------------"
       puts "#{count}. #{wine.name} Rank - #{wine.rank}"
       puts ""
-      puts "Vintage: #{wine.vintage} Score: #{ColorizedString[wine.score.to_s].colorize(:red)} Price: #{wine.price}"
+      puts "Vintage: #{wine.vintage} Score: #{ColorizedString[wine.score.to_s].colorize(:red)} Price: $#{wine.price}"
       puts ""
       puts "Tasting Notes:"
       puts "#{wine.tasting_note}"
@@ -81,7 +81,7 @@ class Wine100::Scrape
       puts "---------------------------"
       puts "#{count}. #{wine.name} Rank - #{wine.rank}"
       puts ""
-      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: #{ColorizedString[wine.price.to_s].colorize(:red)}"
+      puts "Vintage: #{wine.vintage} Score: #{wine.score} Price: $#{ColorizedString[wine.price.to_s].colorize(:red)}"
       puts ""
       puts "Tasting Notes:"
       puts "#{wine.tasting_note}"
@@ -90,6 +90,12 @@ class Wine100::Scrape
       count += 1
     end
   end
+  
+  def self.display_tasting_note_matches(search_keyword)
+    matches = Wine100::Wine.all.select { |item| item.tasting_note.downcase.include?(search_keyword.downcase) }
+    binding.pry
+  end
+  
     
 
   
