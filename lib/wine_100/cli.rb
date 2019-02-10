@@ -1,6 +1,7 @@
 class Wine100::CLI
   def call
     puts "Welcome to the Top 100 Wines Rated by Wine Spectator"
+    Wine100::Scrape.new.build_wines
     menu
   end
   

@@ -12,6 +12,15 @@ class Wine100::Scrape
 
   end
   
+  def load_page
+    Nokogiri::HTML(open("./fixtures/winespectator.html"))
+    #Nokogiri::HTML(open("https://top100.winespectator.com/lists/"))
+  end
+  
+  def build_wines
+    
+  end
+  
   def self.scrape_top_100
      url = 'https://top100.winespectator.com/lists/'
     @scrape_html = Nokogiri::HTML(open("./fixtures/winespectator.html"))
