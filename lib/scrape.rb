@@ -13,8 +13,8 @@ class Wine100::Scrape
   end
   
   def load_page
-    Nokogiri::HTML(open("./fixtures/winespectator.html"))
-    #Nokogiri::HTML(open("https://top100.winespectator.com/lists/"))
+    #Nokogiri::HTML(open("./fixtures/winespectator.html"))
+    Nokogiri::HTML(open("https://top100.winespectator.com/lists/"))
   end
   
   def scrape_wine_advocate
