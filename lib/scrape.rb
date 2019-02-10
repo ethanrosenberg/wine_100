@@ -46,7 +46,6 @@ class Wine100::Scrape
       puts ""
       puts "Tasting Notes:"
       puts "#{wine.tasting_note}"
-      puts ""
       puts "---------------------------"
       puts ""
       

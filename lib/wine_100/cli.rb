@@ -11,13 +11,17 @@ class Wine100::CLI
     
     input = ""
     until input == "exit" 
-      puts "Please enter the number of your choice:"
-      puts " "
-      puts "1. View List of Top 100 Wines."
-      puts "2. List of Top 100 Wines by Rating"
-      puts "3. List of Top 100 Wines by Price"
-      puts "4. Find wine by entering tasting note keyword eg. \"licorice\" (beta)"
-      puts "5. Exit"
+      puts ""
+      puts "Would you like to make another choice? (y/n)"
+      
+      input = gets.chomp.to_s
+      
+      if input == "y"
+        display_options
+      else
+        goodbye
+      end
+     
       
       input = gets.chomp.to_s
         
@@ -37,6 +41,17 @@ class Wine100::CLI
       end
     end
       
+  end
+  
+  def display_options
+      puts ""
+      puts "Please enter the number of your choice:"
+      puts " "
+      puts "1. View List of Top 100 Wines."
+      puts "2. List of Top 100 Wines by Rating"
+      puts "3. List of Top 100 Wines by Price"
+      puts "4. Find wine by entering tasting note keyword eg. \"licorice\" (beta)"
+      puts "5. Exit"
   end
   
   def list_top_wines
