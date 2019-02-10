@@ -5,7 +5,7 @@ class Wine100::Wine
   
   attr_accessor :name, :rank, :vintage, :score, :price, :tasting_note
   
-  def initialize(name, rank, vintage, score, price, tasting_note)
+  def initialize(name = nil, rank = nil, vintage = nil, score = nil, price = nil, tasting_note = nil)
     @name = name
     @rank = rank
     @vintage = vintage
@@ -21,7 +21,7 @@ class Wine100::Wine
   end
   
   def self.build_wine_from_table(row)
-    self.new(build_wine_title(row),)
+    self.new(row[:name], row[:rank], row[:vintage], row[:score], row[:price], row[:tasting_note])
   end
   
  
@@ -33,6 +33,7 @@ class Wine100::Wine
   def doc
     @doc ||= Nokogiri::HTML(open(self.url))
   end
+  
   
   
   
