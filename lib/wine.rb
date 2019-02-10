@@ -13,4 +13,8 @@ class Wine100::Wine
     @@all
   end
   
+  def self.build_wine_from_table(row)
+    self.new(row.css("td[class='name'] div[class='table-name'] span[class='wineName']"))
+  end
+  
 end
