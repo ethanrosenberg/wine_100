@@ -38,7 +38,18 @@ class Wine100::Scrape
 
   def self.display_top_100
     Wine100::Wine.all.each do |wine|
-      puts "#{wine.rank}. #{wine.name}"
+      puts ""
+      puts "---------------------------"
+      puts "#{wine.rank}. #{wine.name} - #{wine.vintage}"
+      puts ""
+      puts "Score: #{wine.score} Price: #{wine.price}"
+      puts ""
+      puts "Tasting Notes:"
+      puts "#{wine.tasting_note}"
+      puts ""
+      puts "---------------------------"
+      puts ""
+      
     end
   end
   
