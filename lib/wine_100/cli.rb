@@ -28,6 +28,8 @@ class Wine100::CLI
          count += 1
          
       end
+      
+      goodbye
     
   end
   
@@ -79,7 +81,7 @@ class Wine100::CLI
   def 
   
   def goodbye
-    "See you later!"
+    "We hope you found the perfect wine! Goodbye!"
   end
   
 end
