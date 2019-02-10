@@ -13,7 +13,6 @@ class Wine100::Wine
     @price = price
     @tasting_note = tasting_note
     @@all << self
-    binding.pry
   end
   
   def self.all
@@ -23,17 +22,6 @@ class Wine100::Wine
   def self.build_wine_from_table(row)
     self.new(row[:name], row[:rank], row[:vintage], row[:score], row[:price], row[:tasting_note])
   end
-  
- 
-  
-  def vintage
-    @vintage ||= wine_row.css("td[class='name'] div[class='table-name'] span[class='wineName'] .vintageNumber").text.strip
-  end
-  
-  def doc
-    @doc ||= Nokogiri::HTML(open(self.url))
-  end
-  
   
   
   

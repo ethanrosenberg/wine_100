@@ -5,11 +5,8 @@ require 'pry'
 class Wine100::Scrape
   
   attr_accessor :url
-
-  #attr_accessor :name, :rank, :vintage, :score, :price, :tasting_note
   
   def initialize
-   
 
   end
   
@@ -38,6 +35,12 @@ class Wine100::Scrape
     rows
   end
 
+
+  def self.display_top_100
+    Wine100::Wine.all.each do |wine|
+      puts "#{wine.rank}. #{wine.name}"
+    end
+  end
   
   def build_wine_title(row)
     winery_main_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[1].text.strip
