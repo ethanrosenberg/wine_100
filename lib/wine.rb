@@ -9,8 +9,8 @@ class Wine100::Wine
     @name = name
     @rank = rank
     @vintage = vintage
-    @score = score.to_i
-    @price = price
+    @score = score.strip.to_i
+    @price = price.gsub('$', '').strip.to_i
     @tasting_note = tasting_note
     @@all << self
   end

@@ -79,7 +79,7 @@ class Wine100::CLI
   end
   
   def list_by_price
-    
+    Wine100::Scrape.display_top_100_by_price
   end
   
   def find_by_tasting_keyword
