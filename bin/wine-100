@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/wine_100'
+require_relative '../lib/wine_100'
 
-Wine100::CLI.new.call
+Wine100::CLI.new.start

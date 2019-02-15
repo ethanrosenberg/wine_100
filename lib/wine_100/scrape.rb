@@ -1,26 +1,21 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
-require 'colorize'
-require 'colorized_string'
 
 class Wine100::Scrape
-  
+
   attr_accessor :url
-  
+
   def initialize
 
   end
-  
+
   def load_page
     #Nokogiri::HTML(open("./fixtures/winespectator.html"))
     Nokogiri::HTML(open("https://top100.winespectator.com/lists/"))
   end
-  
+
   def scrape_wine_advocate
     rows = []
     data_rows = self.load_page.css("tr[role='row']")
-    
+
     count = 1
     data_rows.each do |row|
       wine_hash = {
@@ -50,12 +45,12 @@ class Wine100::Scrape
       puts "#{wine.tasting_note}"
       puts "---------------------------"
       puts ""
-      
+
     end
   end
-  
+
   def self.display_top_100_by_score
-   
+
     sorted_by_score = Wine100::Wine.all.sort_by {|wine| -wine.score}
      count = 1
      sorted_by_score.each do |wine|
@@ -72,7 +67,7 @@ class Wine100::Scrape
       count += 1
     end
   end
-  
+
   def self.display_top_100_by_price
     sorted_by_price = Wine100::Wine.all.sort_by {|wine| -wine.price}
      count = 1
@@ -90,7 +85,7 @@ class Wine100::Scrape
       count += 1
     end
   end
-  
+
   def self.display_tasting_note_matches(search_keyword)
     matches = Wine100::Wine.all.select { |item| item.tasting_note.downcase.include?(search_keyword.downcase) }
     count = 1
@@ -113,30 +108,30 @@ class Wine100::Scrape
       puts ColorizedString["Sorry no matches were found!"].colorize(:red)
       puts ""
     end
-      
-  end
-  
-    
 
-  
+  end
+
+
+
+
   def build_wine_title(row)
     winery_main_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[1].text.strip
     winery_wine_title = row.css("td[class='name'] div[class='table-name'] span[class='wineName']").children[0].text.strip
     return "#{winery_wine_title} #{winery_main_title}"
   end
-  
+
   def build_tasting_note(row)
     note = row.css(".name .table-aditionalInfo .tabel-note").children[0].text.strip
     reviewer_initials = row.css(".name .table-aditionalInfo .tabel-note i").children[0]
     return "#{note}#{reviewer_initials}"
   end
-  
-  
+
+
   def build_wines
     scrape_wine_advocate.each do |wine_item|
       Wine100::Wine.build_wine_from_table(wine_item)
     end
   end
 
-  
+
 end

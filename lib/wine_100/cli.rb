@@ -1,10 +1,10 @@
-require 'colorize'
-require 'colorized_string'
-require 'artii'
+#require 'colorize'
+#require 'colorized_string'
+#require 'artii'
 
 class Wine100::CLI
 
-  def call
+  def start
 
     puts ""
     puts "Welcome to the Top 100 Wines Rated by Wine Spectator".colorize(:color => :green)
