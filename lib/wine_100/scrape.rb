@@ -128,10 +128,8 @@ class Wine100::Scrape
 
 
   def build_wines
-    scrape_wine_advocate.each do |wine_item|
-      Wine100::Wine.build_wine_from_table(wine_item)
-    end
+    @wines ||= scrape_wine_advocate.map  {|wine_item| Wine100::Wine.build_wine_from_table(wine_item) }
+    Wine100::Wine.all
   end
-
 
 end
